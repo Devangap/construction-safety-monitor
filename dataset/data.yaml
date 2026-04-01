@@ -1,0 +1,6 @@
+train: /content/final_dataset_all/train/images
+val: /content/final_dataset_all/valid/images
+test: /content/final_dataset_all/test/images
+
+nc: 3
+names: ['person', 'helmet', 'vest']
