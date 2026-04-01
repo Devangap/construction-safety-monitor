@@ -1,6 +1,8 @@
 Construction Safety Monitor
+
 AI-Powered PPE Compliance System
 Overview
+
 This project presents a computer vision-based construction safety monitoring system that analyzes site images to determine whether workers comply with essential Personal Protective Equipment (PPE) requirements.
 Unlike traditional object detection systems, this solution goes beyond detection by performing worker-level reasoning. Each detected worker is individually evaluated for helmet and safety vest compliance, and the system produces a scene-level safety decision with explicit explanations.
 The system is built using YOLOv8 + rule-based reasoning, combining deep learning with structured spatial logic to simulate real-world safety inspection.
@@ -472,6 +474,24 @@ pip install ultralytics opencv-python pandas scikit-learn
 - Larger dataset with more hard cases
 - Real-time video processing
 - Deployment via FastAPI or Streamlit
+
+## Extended Violation Categories (Future Work)
+
+While the current system focuses on PPE presence and correct spatial association,  
+additional safety violations such as:
+
+- Helmet not fastened  
+- Vest worn open or improperly  
+- Unsafe worker posture (e.g., working at height without fall protection)  
+
+are not currently detected.
+
+These require advanced techniques such as:
+- Pose estimation (e.g., keypoint detection)
+- Fine-grained PPE condition classification
+- Context-aware scene understanding
+
+Future versions of the system can integrate these capabilities to improve real-world safety monitoring.
 
 ---
 
