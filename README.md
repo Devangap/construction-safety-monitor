@@ -364,7 +364,7 @@ The custom dataset was intentionally designed to include realistic unsafe scenar
 UNCERTAIN is used as an internal reasoning state to represent ambiguity. In real deployment, UNCERTAIN can be treated as UNSAFE for safety-critical environments.
  
 ---
- 
+```
 ## Project Structure
  
 ```
