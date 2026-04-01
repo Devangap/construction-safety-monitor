@@ -1,6 +1,6 @@
 final_dataset_all/
 *.zip
 runs/
-*.pt
-*.jpg
-*.png
+# *.pt
+# *.jpg
+# *.png
