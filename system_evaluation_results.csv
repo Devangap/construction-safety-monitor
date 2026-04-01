@@ -1,0 +1,25 @@
+image_name,true_label,predicted_label,correct,total_persons,safe_workers,unsafe_workers,uncertain_workers
+old-construction-worker-wearing-yellow-safety-helmet-arranging-fluorescent-vest-isolated-on-white-2ANJHHF.jpg,SAFE,SAFE,True,1,1,0,0
+photo-1618674622492-b25ff0999d93.jpg,SAFE,SAFE,True,2,2,0,0
+premium_photo-1750887241126-640eefe071d0.jpg,SAFE,SAFE,True,4,4,0,0
+red_image.jpeg,SAFE,UNSAFE,False,5,4,1,0
+photo-1628146023674-ede6049609b1.jpg,SAFE,UNSAFE,False,4,2,2,0
+pngtree-construction-workers-in-hard-hats-discuss-project-at-outdoor-job-site-png-image_18149292.jpg,SAFE,UNSAFE,False,6,3,3,0
+portrait-man-with-safety-equipment-side-view-carrying-ladder-scaled-1.jpg,SAFE,SAFE,True,1,1,0,0
+man-checklist-group-construction-site-260nw-2634669213.jpg,SAFE,UNSAFE,False,4,3,1,0
+pexels-photo-10202856.jpg,SAFE,UNSAFE,False,6,1,2,3
+The-Importance-of-Ppe.jpg,SAFE,SAFE,True,1,1,0,0
+download (5).jpeg,UNSAFE,UNSAFE,True,3,1,1,1
+download.jpeg,UNSAFE,UNSAFE,True,1,0,1,0
+indonesian-workers-construction-site-sulawesi-indonesia-july-south-sulawesi-no-safety-equipment-working-bamboo-56680396.jpg,UNSAFE,UNSAFE,True,2,0,1,1
+download (3).jpeg,UNSAFE,UNSAFE,True,2,0,2,0
+images.jpeg,UNSAFE,UNSAFE,True,1,0,1,0
+depositphotos_132812646-stock-photo-indian-workers-without-protective-equipment.jpg,UNSAFE,UNSAFE,True,2,0,1,1
+construction-site-jl-kartika-plaza-kuta-bali-indonesia-b91gpx.jpg,UNSAFE,SAFE,False,1,1,0,0
+download (6).jpeg,UNSAFE,UNSAFE,True,3,0,3,0
+download (4).jpeg,UNSAFE,UNSAFE,True,1,0,1,0
+depositphotos_23165176-stock-photo-unsafe-condition-of-workers-from.jpg,UNSAFE,UNSAFE,True,2,0,2,0
+el-alto-cabo-blanco-piura-600nw-2657702577.jpg,UNCERTAIN,UNSAFE,False,12,0,10,2
+group-construction-worker-helmet-safety-260nw-1035363223.jpg,UNCERTAIN,UNSAFE,False,47,10,13,24
+construction-workers-wearing-bright-orange-safety-vests-1024x772.jpg,UNCERTAIN,UNCERTAIN,True,10,8,0,2
+construction-workers-asia-13241517.jpg,UNCERTAIN,UNSAFE,False,9,0,9,0

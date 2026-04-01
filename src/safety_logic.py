@@ -84,18 +84,31 @@ def get_torso_region(person_box: Box) -> Box:
 
 def is_small_person(person_box: Box, image_shape: Optional[Tuple[int, int]] = None) -> bool:
     """
-    Marks tiny distant people as small. If image_shape is given, use relative area.
+    Marks a worker as small/distant only if the box is genuinely tiny
+    relative to the image.
     """
     if image_shape is None:
         return False
 
     img_h, img_w = image_shape
-    img_area = img_h * img_w
-    if img_area <= 0:
+    if img_h <= 0 or img_w <= 0:
         return False
 
-    person_area = box_area(person_box)
-    return (person_area / img_area) < 0.02
+    x1, y1, x2, y2 = person_box
+    person_w = max(0.0, x2 - x1)
+    person_h = max(0.0, y2 - y1)
+    person_area = person_w * person_h
+    img_area = img_h * img_w
+
+    rel_area = person_area / img_area
+    rel_height = person_h / img_h
+    rel_width = person_w / img_w
+
+    return (
+        rel_area < 0.003 or
+        rel_height < 0.12 or
+        rel_width < 0.04
+    )
 
 
 def is_helmet_for_person(helmet_box: Box, person_box: Box) -> bool:
@@ -202,20 +215,33 @@ def evaluate_worker(
     has_helmet = matched_helmet is not None
     has_vest = matched_vest is not None
 
-    reasons = []
     small_person = is_small_person(person_box, image_shape)
+    LOW_CONF = 0.6
 
-    if not has_helmet:
-        reasons.append("Helmet unclear" if small_person else "Missing helmet")
-    if not has_vest:
-        reasons.append("Vest unclear" if small_person else "Missing vest")
+    helmet_low_conf = matched_helmet is not None and matched_helmet["confidence"] < LOW_CONF
+    vest_low_conf = matched_vest is not None and matched_vest["confidence"] < LOW_CONF
+
+    reasons = []
 
     if has_helmet and has_vest:
         status = "SAFE"
-    elif small_person:
+        reason = "Compliant"
+
+    elif small_person or helmet_low_conf or vest_low_conf:
         status = "UNCERTAIN"
+        if not has_helmet:
+            reasons.append("Helmet unclear")
+        if not has_vest:
+            reasons.append("Vest unclear")
+        reason = ", ".join(reasons)
+
     else:
         status = "UNSAFE"
+        if not has_helmet:
+            reasons.append("Missing helmet")
+        if not has_vest:
+            reasons.append("Missing vest")
+        reason = ", ".join(reasons)
 
     return {
         "person_id": person_id,
@@ -223,7 +249,7 @@ def evaluate_worker(
         "has_helmet": has_helmet,
         "has_vest": has_vest,
         "status": status,
-        "reason": ", ".join(reasons) if reasons else "Compliant",
+        "reason": reason,
     }
 
 
